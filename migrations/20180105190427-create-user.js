@@ -20,7 +20,7 @@ module.exports = {
       lastname: {
         type: Sequelize.STRING
       },
-      eamil: {
+      email: {
         type: Sequelize.STRING
       },
       createdAt: {
