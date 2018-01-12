@@ -4,9 +4,6 @@ module.exports = (sequelize, DataTypes) => {
   var user = sequelize.define('user', {
     username: {
       type: DataTypes.STRING,
-      validate:{
-        allowNull: false
-      }
     },
     password: {
       type: DataTypes.STRING,
@@ -27,6 +24,14 @@ module.exports = (sequelize, DataTypes) => {
         }
       }
     },
+    imgurl:{
+      type: DataTypes.STRING,
+      validate:{
+        isUrl:{
+          msg: 'Not a working Url, try again.'
+        }
+      }
+    },
   }, {
     hooks:{
       beforeCreate: function(pendingUser, options){
@@ -39,6 +44,10 @@ module.exports = (sequelize, DataTypes) => {
     classMethods: {
       associate: function(models) {
         // associations can be defined here
+        //a user has many books
+        models.user.hasMany(models.book, {through: 'usersBooks'});
+        //users belong to many users as friends?
+        models.user.hasMany(models.user, {as: 'friends', through: 'userFriends'});
       }
     }
   });

@@ -22,11 +22,12 @@ router.post('/signup', function(req,res,next){
 	console.log('req.body is', req.body);
 	db.user.findOrCreate({
 		where: {email: req.body.email},
-		default: {
+		defaults: {
 			username: req.body.username,
 			firstname: req.body.firstname,
 			lastname: req.body.lastname,
-			password: req.body.password
+			password: req.body.password,
+			imgurl: req.body.imgurl
 		}
 	}).spread(function(user, wasCreated){
 		if(wasCreated){
@@ -38,7 +39,7 @@ router.post('/signup', function(req,res,next){
 		}else{
 			//tried to make duplicate
 			req.flash('error', 'Email already exsists, Bro!');
-			req.redirect('/auth/login');
+			res.redirect('/auth/login');
 		}
 	}).catch(function(err){
 		req.flash('error', err.message);
