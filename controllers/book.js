@@ -4,16 +4,14 @@ var db = require('../models');
 var router = express.Router();
 
 router.get('/newbook', function(req,res){
-	res.render('booky/newbook');
+	res.render('book/newbook');
 });
 
 router.get('/newbook', function(req, res) {
-	var search = {
-		q: 'Lord of the Rings'
-	}
 	 request({
     url: 'http://openlibrary.org/',
-    q: search
+    q: req.body.userinput,
+    limit: 8
   }, function (error, response, body) {
     if (!error && response.statusCode == 200) {
       var dataObj = JSON.parse(body);
@@ -22,7 +20,9 @@ router.get('/newbook', function(req, res) {
   });
 });
 
-
+router.get('/library', function(req,res){
+  res.render('book/library');
+});
 
 
 

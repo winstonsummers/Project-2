@@ -1,5 +1,5 @@
 var passport=require('passport');
-var localStrategy=require('passport-local').Strategy;
+var LocalStrategy=require('passport-local').Strategy;
 var db=require('../models');
 
 passport.serializeUser(function(user, callback){
@@ -14,12 +14,13 @@ passport.deserializeUser(function(id, callback){
 	});
 });
 
-passport.use(new localStrategy({
+passport.use(new LocalStrategy({
 	usernameField: 'email',
 	passwordField: 'password'
 }, function(email, password, callback){
+	console.log(email);
 	db.user.findOne({
-		where:{ email:email}
+		where: { email: email }
 	}).then(function(user){
 		if(!user || !user.isValidPassword(password)){
 			callback(null, false);

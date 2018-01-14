@@ -1,16 +1,16 @@
 require('dotenv').config();
 var bodyParser = require('body-parser');
 var express = require('express');
-var ejslauouts = require('express-ejs-layouts');
+var ejsLayouts = require('express-ejs-layouts');
 var flash = require('connect-flash');
 var isLoggedIn=require('./middleware/isLoggedIn');
-var passport=require('./config/passportConfig');
+var passport=require('./config/passportConfig.js');
 var session = require('express-session')
 var app = express();
 
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({ extended: false}));
-app.use(ejslauouts);
+app.use(ejsLayouts);
 app.use(session({
 	secret: process.env.SESSION_SECRET,
 	resave: false,

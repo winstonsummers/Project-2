@@ -1,5 +1,5 @@
 var express = require('express');
-var passport=require('../config/passportConfig');
+var passport=require('../config/passportConfig.js');
 var db=require('../models');
 var router = express.Router();
 
@@ -20,7 +20,7 @@ router.get('/signup', function(req,res){
 
 router.post('/signup', function(req,res,next){
 	console.log('req.body is', req.body);
-	db.user.findOrCreate({
+	db.user.findCreateFind({
 		where: {email: req.body.email},
 		defaults: {
 			username: req.body.username,
@@ -42,6 +42,7 @@ router.post('/signup', function(req,res,next){
 			res.redirect('/auth/login');
 		}
 	}).catch(function(err){
+		console.log("catch in auth",err);
 		req.flash('error', err.message);
 		res.redirect('/auth/signup');
 	});
