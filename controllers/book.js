@@ -21,20 +21,21 @@ router.get('/newbook', function(req, res) {
           console.log(err);
         }
     }).then(function(books){
-      console.log(books.length);
-      console.log(typeof(books));
       books = JSON.parse(books);
       res.render('book/newbook', {books: books});
     });
 });
 
 router.post('/newbook', function(req, res){
+  console.log(data);
   db.author.findCreateFind({
-    where: { name: book.author_name}
+    where: { name: data.name}
   });
-  db.author.findCreateFind({
-    where: { title: book.title },
-    defaults: { coverurl: book.cover_i }
+  db.book.findCreateFind({
+    where: { title: data.title },
+    defaults: { 
+      coverurl: data.coverurl
+    }
   });
 });
 
