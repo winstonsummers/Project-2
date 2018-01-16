@@ -9,16 +9,17 @@
 </div>
 <div class="container">
 	<!-- for each loop to show books linked to user through db -->
-	<ul>
+	<ul class="list-group">
 		<% if(results.length <= 0) {%>
-			<li>You don't have any books yet. Find one in the prompt above!</li>
+			<li class="list-group-item">You don't have any books yet. Find one in the prompt above!</li>
 		<%}else{%>
 
 			<%results.forEach(function(item){%>
-			<li>
-				<%= item.title %>
+				<li class="list-group-item">
+					<p class="list-group-item-heading"><%= item.title %></p>
+					<p class="list-group-item-text"><%= item.name%></p>
 
-			</li>
+				</li>
 
 			<%});%>
 		<%}%>

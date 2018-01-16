@@ -27,15 +27,19 @@ router.get('/newbook', function(req, res) {
 });
 
 router.post('/newbook', function(req, res){
-  console.log(data);
+  console.log(req.body);
   db.author.findCreateFind({
-    where: { name: data.name}
+    where: { name: req.body.name}
+  }).spread(function(author, created) {
+    console.log(author);
   });
   db.book.findCreateFind({
-    where: { title: data.title },
+    where: { title: req.body.title },
     defaults: { 
-      coverurl: data.coverurl
+      coverurl: req.body.coverurl
     }
+  }).spread(function(book, created) {
+    console.log(book);
   });
 });
 

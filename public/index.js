@@ -10,10 +10,10 @@ function addBook(book) {
 	};
 
 	$.ajax({
-		url: "/URL HERE",
+		url: "/book/newbook",
 		type: "POST",
-		contentType: "application/json",
-		data: JSON.stringify(data),
+		dataType: "application/json",
+		data: data,
 		success: function(result) {
 			$(book).attr("value", "Saved!");
 			$(book).removeAttr("onclick");
