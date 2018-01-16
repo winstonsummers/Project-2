@@ -1,4 +1,26 @@
 <h2>My Library</h2>
-<div>
+<div class="container">
+	<h3>What new books have you found?</h3>
+	<form method="get" action="/book/newbook">
+		<label>Search By:</label>
+		<input type="text" name="userinput" placeholder="Title, Author or ISBN">
+		<input type="submit" value="Search">
+	</form>
+</div>
+<div class="container">
 	<!-- for each loop to show books linked to user through db -->
+	<ul>
+		<% if(results.length <= 0) {%>
+			<li>You don't have any books yet. Find one in the prompt above!</li>
+		<%}else{%>
+
+			<%results.forEach(function(item){%>
+			<li>
+				<%= item.title %>
+
+			</li>
+
+			<%});%>
+		<%}%>
+	</ul>
 </div>

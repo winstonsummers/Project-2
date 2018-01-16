@@ -1,20 +1,19 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-  var book = sequelize.define('books', {
+  var book = sequelize.define('book', {
     title: DataTypes.STRING,
     authorId: DataTypes.INTEGER,
     coverurl: DataTypes.STRING,
     isbn: DataTypes.INTEGER
-  }, {
-    classMethods: {
-      associate: function(models) {
-        // associations can be defined here
-        //a book belongs to an author
-        models.book.belongsTo(models.author);
-        //a book belongs to many users
-        models.book.belongsToMany(models.user, {through: 'usersBooks'});
-      }
-    }
   });
+
+  book.associate = function(models) {
+    // book.belongsTo()
+    //a book belongs to an author
+    book.belongsTo(models.author);
+    // //a book belongs to many users
+    book.belongsToMany(models.user, {through: 'usersBooks'});
+  }
+
   return book;
 };

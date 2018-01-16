@@ -1,12 +1,14 @@
 <div class="container">
-	<h3>What new books have you found?</h3>
-	<form method="get" action="/book/newbook/search">
-		<label>Search By:</label>
-		<input type="text" name="userinput" placeholder="Title, Author or ISBN">
-		<input type="submit" value="Search">
-	</form>
-</div>
-<div>
 	<!-- forEach the results of the search into  -->
-
+	<ul class="list-group">
+		<% books.docs.forEach(function(item){%>
+			<li class="list-group-item">
+				<p class="list-group-item-heading"><%-item.title%></p>
+				<p class="list-group-item-text"><%-item.author_name%></p>
+				<form method="post" action="/newbook">
+					<input type="submit" name="Add Book" class="btn btn-success">
+				</form>
+			</li>
+		<%});%>
+	</ul>
 </div>

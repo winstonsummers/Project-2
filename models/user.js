@@ -31,8 +31,9 @@ module.exports = (sequelize, DataTypes) => {
           msg: 'Not a working Url, try again.'
         }
       }
-    },
-  }, {
+    }
+  },
+  {
     hooks:{
       beforeCreate: function(pendingUser, options){
         if(pendingUser && pendingUser.password){
@@ -40,17 +41,18 @@ module.exports = (sequelize, DataTypes) => {
           pendingUser.password=hash;
         }
       }
-    },
-    classMethods: {
-      associate: function(models) {
-        // associations can be defined here
-        //a user has many books
-        models.user.hasMany(models.book, {through: 'usersBooks'});
-        //users belong to many users as friends?
-        models.user.hasMany(models.user, {as: 'friends', through: 'userFriends'});
-      }
     }
   });
+
+  user.associate = function(models) {
+    console.log(models)
+    // associations can be defined here
+    //a user has many books
+    user.belongsToMany(models.book, {through: 'usersBooks'});
+    //users belong to many users as friends?
+    user.belongsToMany(models.user, {as: 'friends', through: 'userFriends'});
+  };
+
   user.prototype.isValidPassword = function(passwordTyped){
     return bcrypt.compareSync(passwordTyped, this.password);
   }
