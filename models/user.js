@@ -47,9 +47,9 @@ module.exports = (sequelize, DataTypes) => {
   user.associate = function(models) {
     // associations can be defined here
     //a user has many books
-    user.belongsToMany(models.book, {through: 'usersBooks'});
+    user.belongsToMany(models.book, {through: models.usersBooks});
     //users belong to many users as friends?
-    user.belongsToMany(models.user, {as: 'friends', through: 'userFriends'});
+    user.belongsToMany(models.user, {as: 'friends', through: models.userFriends});
   };
 
   user.prototype.isValidPassword = function(passwordTyped){

@@ -12,7 +12,7 @@ module.exports = (sequelize, DataTypes) => {
     //a book belongs to an author
     book.belongsTo(models.author);
     // //a book belongs to many users
-    book.belongsToMany(models.user, {through: 'usersBooks'});
+    book.belongsToMany(models.user, {through: models.usersBooks});
   }
 
   return book;

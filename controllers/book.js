@@ -59,7 +59,10 @@ router.get('/library', function(req, res) {
     });
 });
 
-
+router.delete('/book/library', function(req, res) {
+  var bookToDelete = req.params.name;
+  res.send({message: 'success'});
+});
 
 
 

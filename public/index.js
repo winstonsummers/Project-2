@@ -1,5 +1,5 @@
 function addBook(book) {
-	console.log(book)
+	console.log("add",book);
 	var title = $(book).attr("data-title");
 	var cover = $(book).attr("data-cover");
 	var author = $(book).attr("data-author");
@@ -20,3 +20,16 @@ function addBook(book) {
 		}
 	});
 }
+
+$('.delete').on('click', function(e) {
+  	e.preventDefault();
+	var bookElement= $(this);
+	var bookUrl = bookElement.attr('href');
+	$.ajax({
+		method: 'DELETE',
+		url: bookUrl
+	}).done(function(data){
+		console.log(data);
+		bookElement.remove();
+	});
+});

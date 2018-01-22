@@ -16,9 +16,11 @@
 
 			<%results.forEach(function(item){%>
 				<li class="list-group-item">
-					<p class="list-group-item-heading"><%= item.title %></p>
-					<p class="list-group-item-text"><%= item.name%></p>
-
+					<form>
+						<p class="list-group-item-heading"><%= item.title %></p>
+						<p class="list-group-item-text"><%= item.name%></p>
+						<a href="/book/library" class="delete btn btn-danger">Delete Book</a>
+					</form>
 				</li>
 
 			<%});%>
