@@ -21,7 +21,7 @@ function addBook(book) {
 	});
 }
 
-$('.delete-link').on('click', function(e) {
+$('.delete-link').click(function(e) {
   	e.preventDefault();
 	var bookElement= $(this);
 	var bookUrl = bookElement.attr('href');
@@ -35,3 +35,29 @@ $('.delete-link').on('click', function(e) {
 		// window.location = '/book/library';
 	});
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
