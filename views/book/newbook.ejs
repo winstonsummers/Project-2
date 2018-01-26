@@ -6,7 +6,7 @@
 				<form method="post" action="./newbook">
 					<p class="list-group-item-heading"><%-item.title%></p>
 					<p class="list-group-item-text"><%-item.author_name%></p>
-					<img src="http://covers.openlibrary.org/b/isbn/<%-item.cover_i%>-S.jpg">
+					<img src="http://covers.openlibrary.org/b/id/<%-item.cover_i%>-S.jpg">
 					<input data-title="<%- item.title %>" data-author="<%- item.author_name %>" data-cover="http://covers.openlibrary.org/b/isbn/<%- item.cover_i %>" type="button" onclick="addBook(this)" value="Add Book!" class="btn btn-success">
 				</form>
 			</li>

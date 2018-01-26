@@ -59,8 +59,10 @@ router.get('/library', function(req, res) {
     });
 });
 
-router.delete('/book/library', function(req, res) {
+router.delete('/book/library/:name', function(req, res) {
+  console.log('route')
   var bookToDelete = req.params.name;
+  console.log('bookToDelete')
   res.send({message: 'success'});
 });
 

@@ -19,7 +19,8 @@
 					<form>
 						<p class="list-group-item-heading"><%= item.title %></p>
 						<p class="list-group-item-text"><%= item.name%></p>
-						<a href="/book/library" class="delete btn btn-danger">Delete Book</a>
+						<img src="http://covers.openlibrary.org/b/id/<%= item.imgurl %>-S.jpg">
+						<a href="/book/library/<%= item.title%>" class="delete-link btn btn-danger">Delete Book</a>
 					</form>
 				</li>
 

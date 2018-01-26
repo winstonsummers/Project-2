@@ -21,15 +21,17 @@ function addBook(book) {
 	});
 }
 
-$('.delete').on('click', function(e) {
+$('.delete-link').on('click', function(e) {
   	e.preventDefault();
 	var bookElement= $(this);
 	var bookUrl = bookElement.attr('href');
+	console.log('bookElement:', bookElement, 'bookUrl:', bookUrl);
 	$.ajax({
 		method: 'DELETE',
 		url: bookUrl
 	}).done(function(data){
-		console.log(data);
+		console.log('done',data);
 		bookElement.remove();
+		// window.location = '/book/library';
 	});
 });
